@@ -7,7 +7,6 @@ app.use(express.json({ extended: false }));
 const port = process.env.PORT || 5000;
 
 const corsOptions = {
-  // origin: "https://restful-countries-ksh.netlify.app",
   origin: "http://localhost:4200",
 };
 

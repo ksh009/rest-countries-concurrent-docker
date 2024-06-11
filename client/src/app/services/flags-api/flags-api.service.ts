@@ -14,7 +14,7 @@ export class FlagsApiService {
   constructor(private http: HttpClient) {}
 
   getAllCountries(): Observable<Country[]> {
-    const url = "https://simple-flags-api.onrender.com/api/countries";
+    const url = "http://localhost:5000/api/countries";
 
     return this.http.get<Country[]>(url).pipe(
       map((response) => response
@@ -26,7 +26,7 @@ export class FlagsApiService {
   }
 
   getCountry(countryName: string): Observable<Country> {
-    const url = `https://simple-flags-api.onrender.com/api/country/${countryName}`;
+    const url = `http://localhost:5000/api/country/${countryName}`;
 
     return this.http.get<Country>(url).pipe(
       catchError((error) => {
