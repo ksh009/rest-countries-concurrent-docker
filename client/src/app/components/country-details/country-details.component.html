@@ -1,0 +1,98 @@
+<div
+  [ngClass]="
+    themeMode === 'dark'
+      ? 'bg-veryDarkBlueDM text-white'
+      : 'bg-white text-veryDarkBlueLM'
+  "
+  class="w-full h-full flex flex-col justify-start items-start min-h-screen px-6 sm:px-10 py-9"
+>
+  <button
+    (click)="goBack()"
+    [ngClass]="themeMode === 'dark' ? 'bg-darkBlue' : 'bg-white'"
+    class="my-4 md:my-7 px-4 sm:py-2 rounded shadow-xl flex items-center justify-center w-28 h-9 text-xs sm:text-bodyHomepage font-light"
+  >
+    <i class="fas fa-arrow-left mr-2"></i>
+    Back
+  </button>
+  <div *ngIf="country" class="w-full flex flex-col md:flex-row mt-12 md:mt-5">
+    <div class="w-full md:w-1/2 h-full justify-center items-center">
+      <img
+        [src]="country.flags"
+        alt="{{ country.common_name }} flag"
+        class="w-full h-72 sm:h-80 md:h-72` md:w-11/12 shadow-2xl rounded"
+      />
+    </div>
+    <div class="w-full md:w-1/2 mt-8 md:mt-0 justify-center items-center">
+      <h1 class="text-3xl font-bold mb-2">{{ country.common_name }}</h1>
+      <div class="grid grid-cols-1 md:grid-cols-2 grid-x-9 w-full min-h-32">
+        <ul class="text-xs mt-2 font-normal">
+          <li class="flex justify-start w-full mb-1.5">
+            <div class="font-semiBold min-w-fit">Native Name:</div>
+            <span class="opacity-80 ms-2">{{ country.native_name }}</span>
+          </li>
+          <li class="flex justify-start w-full mb-1.5">
+            <div class="font-semiBold min-w-fit">Population:</div>
+            <span class="opacity-80 ms-2">{{
+              country.population | number
+            }}</span>
+          </li>
+          <li class="flex justify-start w-full mb-1.5">
+            <div class="font-semiBold min-w-fit">Region:</div>
+            <span class="opacity-80 ms-2">{{ country.region }}</span>
+          </li>
+          <li class="flex justify-start w-full mb-1.5">
+            <div class="font-semiBold min-w-fit">Subregion:</div>
+            <span class="opacity-80 ms-2">{{ country.subregion }}</span>
+          </li>
+          <li class="flex justify-start w-full mb-1.5">
+            <div class="font-semiBold min-w-fit">Capital:</div>
+            <span class="opacity-80 ms-2">{{ country.capital }}</span>
+          </li>
+        </ul>
+        <ul class="text-xs mt-2 font-normal mt-7 md:mt-0 md:ps-9">
+          <li class="flex justify-start w-full mb-1.5">
+            <div class="font-semiBold min-w-fit">Top Level Domain:</div>
+            <span class="opacity-80 ms-2">
+              {{
+                country.top_level_domain && country.top_level_domain.length > 0
+                  ? country.top_level_domain.join(", ")
+                  : ""
+              }}
+            </span>
+          </li>
+          <li class="flex justify-start w-full mb-1.5">
+            <div class="font-semiBold min-w-fit">Currencies:</div>
+            <span class="opacity-80 ms-2"
+              >{{ country.currencies.name }} ({{
+                country.currencies.symbol
+              }})</span
+            >
+          </li>
+          <li class="flex justify-start min-w-fill">
+            <div class="font-semiBold min-w-fit">Languages:</div>
+            <span class="opacity-80 ms-2">{{
+              country.languages.join(", ")
+            }}</span>
+          </li>
+        </ul>
+      </div>
+      <div class="flex flex-col md:flex-row font-light text-md md:text-xs justify-center items-center mt-9 md:mt-4">
+        <p class="min-w-fit me-2 self-start md:self-center">Border Countries:</p>
+        <div
+          class="w-full h-full grid grid-cols-3 md:px-5 mt-3 md:mt-0 gap-5"
+        >
+          <div class="md:max-w-24" *ngFor="let border of country.borders">
+            <button
+              *ngIf="border"
+              [ngClass]="themeMode === 'dark' ? 'bg-darkBlue' : 'bg-white'"
+              class="rounded shadow-xl flex items-center justify-center  h-11 md:h-9 w-full self-start text-xs"
+              (click)="goToDetails(border)"
+            >
+              {{ border }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

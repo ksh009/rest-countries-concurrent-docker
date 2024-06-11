@@ -1,0 +1,30 @@
+<div
+class="rounded shadow-lg w-44 md:w-32 py-2 md:py-0"
+[ngClass]="themeMode === 'dark' ? 'bg-darkBlue' : 'bg-white'"
+>
+<select
+  class="px-2 rounded leading-tight focus:outline-none focus:border-gray-500 bg-transparent h-8 text-xs w-full"
+  [ngClass]="themeMode === 'dark' ? 'text-white' : 'text-veryDarkBlueLM'"
+  placeholder="Filter by region"
+  (change)="onFilterTermSelect()"
+  [(ngModel)]="filterTerm"
+>
+  <option
+    class="border-none"
+    [ngClass]="themeMode === 'dark' ? 'bg-darkBlue' : 'bg-white'"
+    value=""
+    disabled
+    selected
+  >
+    Filter by region
+  </option>
+  <option
+    class="border-none"
+    [ngClass]="themeMode === 'dark' ? 'bg-darkBlue' : 'bg-white'"
+    *ngFor="let region of regions"
+    [value]="region"
+  >
+    {{ region === "" ? "All" : region }}
+  </option>
+</select>
+</div>

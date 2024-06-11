@@ -1,0 +1,12 @@
+<nav
+  class="w-full py-4 md:py-6 h-20 sm:h-auto md:h-14 flex flex-row justify-between items-center m-0 custom-shadow px-6 sm:px-11"
+  [ngClass]="themeMode === 'dark' ? 'bg-darkBlue' : 'bg-white'"
+>
+  <a href="/" class="font-bold text-xs sm:text-sm md:text-lg" [ngClass]="themeMode === 'dark' ? 'text-white' : 'text-veryDarkBlueLM'">
+    Where in the world?
+  </a>
+  <button (click)="toggleThemeMode()" class="font-light text-xs sm:text-sm md:text-lg" [ngClass]="themeMode === 'dark' ? 'text-white' : 'text-veryDarkBlueLM'">
+    <i class="fas" [ngClass]="themeMode === 'dark' ? 'fa-sun' : 'fa-moon'"></i>
+    {{ themeMode === "dark" ? "Light mode" : "Dark mode" }}
+  </button>
+</nav>

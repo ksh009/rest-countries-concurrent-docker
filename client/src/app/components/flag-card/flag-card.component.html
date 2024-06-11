@@ -1,0 +1,38 @@
+<div
+  class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 p-4 w-full h-full px-14 md:px-10 min-h-screen"
+>
+  <div
+    *ngFor="let country of filteredCountries"
+    [ngClass]="themeMode === 'dark' ? 'bg-darkBlue' : 'bg-white'"
+    class="h-80 md:h-72 rounded flex flex-col justify-between shadow-2xl transform transition-transform duration-300 ease-in-out hover:scale-105 cursor-pointer"
+    (click)="goToDetails(country.common_name)"
+  >
+    <div class="flex items-center justify-center h-72 max-h-44 md:h-48 md:max-h-36">
+      <img
+        [src]="country.flags"
+        alt="Country Image"
+        class="h-full w-full rounded-t"
+      />
+    </div>
+    <div
+      class="h-4/6 px-4 py-3"
+      [ngClass]="themeMode === 'dark' ? 'text-white' : 'text-veryDarkBlueLM'"
+    >
+      <div class="text-bodyHomepage font-bold mt-4 mb-2">
+        {{ country.common_name }}
+      </div>
+      <ul class="text-xs mt-2 font-light">
+        <li>
+          Population:
+          <span class="opacity-50">{{ country.population | number }}</span>
+        </li>
+        <li>
+          Region: <span class="opacity-50">{{ country.region }}</span>
+        </li>
+        <li>
+          Capital: <span class="opacity-50">{{ country.capital }}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
