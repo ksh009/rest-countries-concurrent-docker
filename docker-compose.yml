@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  client:
+    build: ./client
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./client:/usr/src/app
+    networks:
+      - frontend
+      - backend
+
+  server:
+    build: ./server
+    ports:
+      - "5000:5000"
+    networks:
+      - backend
+
+networks:
+  frontend:
+  backend:
