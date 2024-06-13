@@ -41,16 +41,6 @@ export class FlagCardComponent implements OnInit {
     })
   }
 
-  getCurrentThemeMode(): string | void {
-    let newMode;
-    this.themeDataService.themeMode$.subscribe((mode) => {
-      newMode = mode;
-    });
-    if (newMode) {
-      return newMode;
-    }
-  }
-
   applyFilters(): void {
     console.log()
     let filteredData = [...this.countries];
