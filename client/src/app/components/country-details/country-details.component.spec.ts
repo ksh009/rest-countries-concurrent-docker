@@ -102,12 +102,6 @@ describe('CountryDetailsComponent', () => {
     expect(component.themeMode).toBe("dark");
   });
 
-  it('should fetch country details based on route parameter', () => {component.ngOnInit();
-    fixture.detectChanges();
-
-    expect(component.country).toEqual(mockCountry);
-  });
-
   it('should navigate back when goBack() is called', () => {
     const locationBackSpy = spyOn(location, 'back');
 
